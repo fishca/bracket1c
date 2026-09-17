@@ -1,0 +1,32 @@
+```
+# Build artifacts
+build/
+CMakeCache.txt
+CMakeFiles/
+CMakeOutput.log
+cmake.check_cache
+*.bin
+*.out
+
+# Dependencies
+*.a
+*.so
+*.dylib
+*.dll
+*.lib
+
+# Temp files
+*.tmp
+*.swp
+
+# Logs
+*.log
+
+# Editors
+.vscode/
+.idea/
+
+# OS specific
+.DS_Store
+Thumbs.db
+```
