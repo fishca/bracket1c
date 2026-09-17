@@ -45,12 +45,8 @@ jobs:
         version: '6.7.0'
         arch: ${{ matrix.qt_arch }}
         target: 'desktop'
-        modules: ${{ matrix.qt_modules }}
         setup-python: 'true'
-        python-version: '3.11'
-        cached: 'true'
         install-deps: 'true'
-        archives: 'base'
 
     - name: Setup Build Environment (Linux)
       if: matrix.os == 'ubuntu-latest'
@@ -99,7 +95,9 @@ jobs:
 
     - name: Configure CMake (Static Build)
       shell: bash
+      working-directory: 1c-bracket-reader
       run: |
+        rm -rf build
         cmake -S . -B build \
           -G Ninja \
           -DCMAKE_BUILD_TYPE=Release \
@@ -108,15 +106,18 @@ jobs:
           -DCMAKE_INSTALL_PREFIX=install
 
     - name: Build
+      working-directory: 1c-bracket-reader
       run: |
         cmake --build build --config Release --parallel
 
     - name: Install
+      working-directory: 1c-bracket-reader
       run: |
         cmake --install build --config Release
 
     - name: Prepare Artifacts (Linux)
       if: matrix.os == 'ubuntu-latest'
+      working-directory: 1c-bracket-reader
       run: |
         mkdir -p artifact
         cp build/1CBracketReader artifact/
@@ -125,6 +126,7 @@ jobs:
 
     - name: Prepare Artifacts (Windows)
       if: matrix.os == 'windows-latest'
+      working-directory: 1c-bracket-reader
       shell: pwsh
       run: |
         New-Item -ItemType Directory -Force -Path artifact
@@ -133,6 +135,7 @@ jobs:
 
     - name: Prepare Artifacts (macOS)
       if: matrix.os == 'macos-latest'
+      working-directory: 1c-bracket-reader
       run: |
         mkdir -p artifact
         if [ -d "build/1CBracketReader.app" ]; then
