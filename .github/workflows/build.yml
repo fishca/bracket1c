@@ -45,10 +45,7 @@ jobs:
         version: '6.7.0'
         arch: ${{ matrix.qt_arch }}
         target: 'desktop'
-        modules: ${{ matrix.qt_modules }}
         setup-python: 'true'
-        python-version: '3.11'
-        cached: 'true'
         install-deps: 'true'
         archives: 'base'
 
