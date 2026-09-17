@@ -1,0 +1,4 @@
+/workspace/1c-bracket-reader/build/CMakeFiles/1CBracketReader.dir
+/workspace/1c-bracket-reader/build/CMakeFiles/edit_cache.dir
+/workspace/1c-bracket-reader/build/CMakeFiles/rebuild_cache.dir
+/workspace/1c-bracket-reader/build/CMakeFiles/1CBracketReader_autogen.dir
