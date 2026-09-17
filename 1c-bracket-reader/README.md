@@ -46,7 +46,9 @@ brew install qt cmake
 
 ## Сборка
 
-### Linux/macOS
+### Локальная сборка
+
+#### Linux/macOS
 
 ```bash
 cd 1c-bracket-reader
@@ -55,7 +57,7 @@ cmake ..
 make -j$(nproc)  # или make -j$(sysctl -n hw.ncpu) для macOS
 ```
 
-### Windows (Command Prompt)
+#### Windows (Command Prompt)
 
 ```cmd
 cd 1c-bracket-reader
@@ -65,7 +67,7 @@ cmake .. -G "Visual Studio 16 2019" -A x64
 cmake --build . --config Release
 ```
 
-### Windows (PowerShell с Qt)
+#### Windows (PowerShell с Qt)
 
 ```powershell
 # Инициализация среды Qt (путь может отличаться)
@@ -77,6 +79,32 @@ cd build
 cmake .. -G "Ninja" -DCMAKE_BUILD_TYPE=Release
 cmake --build .
 ```
+
+### Статическая сборка
+
+Для создания исполняемого файла без внешних зависимостей используйте опцию `BUILD_STATIC`:
+
+```bash
+mkdir build && cd build
+cmake -DBUILD_STATIC=ON ..
+cmake --build . --config Release
+```
+
+**Примечание:** Для статической сборки требуется Qt, собранный со статическими библиотеками.
+
+## GitHub Actions
+
+Проект настроен для автоматической сборки на GitHub Actions при:
+- Пуше в ветки `main` или `master`
+- Создании pull request
+- Создании релиза
+
+Сборка производится для трёх платформ:
+- Ubuntu Linux
+- Windows (MSVC)
+- macOS
+
+Артефакты сборки доступны в разделе Actions или в релизах.
 
 ## Использование
 
@@ -90,9 +118,10 @@ cmake --build .
 
 ```
 1c-bracket-reader/
-├── CMakeLists.txt          # Конфигурация сборки
-├── README.md               # Этот файл
-├── test_data.txt           # Тестовый файл
+├── .github/workflows/    # GitHub Actions workflow
+├── CMakeLists.txt        # Конфигурация сборки
+├── README.md             # Этот файл
+├── test_data.txt         # Тестовый файл
 └── src/
     ├── main.cpp            # Точка входа
     ├── mainwindow.h/cpp    # Главное окно приложения
