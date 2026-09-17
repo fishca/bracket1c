@@ -1,32 +1,56 @@
 ```
-# Build artifacts
-build/
-CMakeCache.txt
-CMakeFiles/
-CMakeOutput.log
-cmake.check_cache
-*.bin
+# Compiled and build artifacts
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
 *.out
+build/
+dist/
 
 # Dependencies
-*.a
-*.so
-*.dylib
-*.dll
-*.lib
+venv/
+.venv/
+node_modules/
+__pycache__/
+*.egg-info/
+.Python/
 
-# Temp files
+# Logs and temp files
+*.log
 *.tmp
 *.swp
+*.swo
 
-# Logs
-*.log
+# Environment
+.env
+.env.local
+*.env.*
 
 # Editors
 .vscode/
 .idea/
+*.swp
+*.swo
 
 # OS specific
 .DS_Store
 Thumbs.db
+
+# Qt/C++ specific build files
+*.pro.user
+*.qbs.user
+*.qm
+moc_*
+qrc_*
+ui_*
+
+# Coverage and testing
+.coverage
+coverage/
+htmlcov/
+.pytest_cache/
+.mypy_cache/
 ```
