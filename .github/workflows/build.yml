@@ -47,7 +47,6 @@ jobs:
         target: 'desktop'
         setup-python: 'true'
         install-deps: 'true'
-        archives: 'base'
 
     - name: Setup Build Environment (Linux)
       if: matrix.os == 'ubuntu-latest'
