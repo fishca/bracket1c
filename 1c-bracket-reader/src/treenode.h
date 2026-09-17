@@ -26,7 +26,7 @@ private:
     QString mData;
     QString mFullPath;
     TreeNode *mParent;
-    QList<std::unique_ptr<TreeNode>> mChildren;
+    QList<TreeNode*> mChildren;
 };
 
 #endif // TREENODE_H

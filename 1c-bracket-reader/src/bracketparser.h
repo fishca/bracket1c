@@ -12,6 +12,8 @@ public:
     std::unique_ptr<TreeNode> parse(const QString &content);
     
 private:
+    void parseValue(TreeNode *parent);
+    QString parseElement();
     void skipWhitespace();
     QString readToken();
     QString readString();
